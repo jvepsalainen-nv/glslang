@@ -197,7 +197,7 @@ if(ENABLE_SPIRV)
 endif()
 
 # Link pthread
-if(UNIX OR "${CMAKE_SYSTEM_NAME}" STREQUAL "Fuchsia" OR ANDROID)
+if((UNIX OR "${CMAKE_SYSTEM_NAME}" STREQUAL "Fuchsia" OR ANDROID) AND NOT EMSCRIPTEN)
     set(THREADS_PREFER_PTHREAD_FLAG ON)
     find_package(Threads REQUIRED)
     target_link_libraries(glslang Threads::Threads)
